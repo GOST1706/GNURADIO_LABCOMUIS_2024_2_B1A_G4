@@ -69,17 +69,18 @@ class Pra3B_comu1_B1A_G4_modulineal(gr.top_block, Qt.QWidget):
         self.samp_rate = samp_rate = 12500000/8
         self.n = n = 2
         self.ka = ka = 1
+        self.fm = fm = 1e3
         self.fc = fc = 50e6
-        self.Ka = Ka = 1
         self.GTX = GTX = 0
         self.B = B = 10
+        self.Am = Am = 1
         self.Ac = Ac = 125e-3
 
         ##################################################
         # Blocks
         ##################################################
 
-        self._ka_range = qtgui.Range(1, 10, 1e-3, 1, 200)
+        self._ka_range = qtgui.Range(0, 10, 1e-3, 1, 200)
         self._ka_win = qtgui.RangeWidget(self._ka_range, self.set_ka, "Coeficiente ka", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._ka_win)
         self._fc_range = qtgui.Range(50e6, 02.2e9, 1e6, 50e6, 200)
@@ -111,54 +112,6 @@ class Pra3B_comu1_B1A_G4_modulineal(gr.top_block, Qt.QWidget):
                 decimation=44100,
                 taps=[],
                 fractional_bw=0)
-        self.qtgui_time_sink_x_1 = qtgui.time_sink_f(
-            1024, #size
-            samp_rate, #samp_rate
-            "", #name
-            1, #number of inputs
-            None # parent
-        )
-        self.qtgui_time_sink_x_1.set_update_time(0.10)
-        self.qtgui_time_sink_x_1.set_y_axis(-1, 1)
-
-        self.qtgui_time_sink_x_1.set_y_label('Amplitude', "")
-
-        self.qtgui_time_sink_x_1.enable_tags(True)
-        self.qtgui_time_sink_x_1.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
-        self.qtgui_time_sink_x_1.enable_autoscale(False)
-        self.qtgui_time_sink_x_1.enable_grid(False)
-        self.qtgui_time_sink_x_1.enable_axis_labels(True)
-        self.qtgui_time_sink_x_1.enable_control_panel(False)
-        self.qtgui_time_sink_x_1.enable_stem_plot(False)
-
-
-        labels = ['Signal 1', 'Signal 2', 'Signal 3', 'Signal 4', 'Signal 5',
-            'Signal 6', 'Signal 7', 'Signal 8', 'Signal 9', 'Signal 10']
-        widths = [1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1]
-        colors = ['blue', 'red', 'green', 'black', 'cyan',
-            'magenta', 'yellow', 'dark red', 'dark green', 'dark blue']
-        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
-            1.0, 1.0, 1.0, 1.0, 1.0]
-        styles = [1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1]
-        markers = [-1, -1, -1, -1, -1,
-            -1, -1, -1, -1, -1]
-
-
-        for i in range(1):
-            if len(labels[i]) == 0:
-                self.qtgui_time_sink_x_1.set_line_label(i, "Data {0}".format(i))
-            else:
-                self.qtgui_time_sink_x_1.set_line_label(i, labels[i])
-            self.qtgui_time_sink_x_1.set_line_width(i, widths[i])
-            self.qtgui_time_sink_x_1.set_line_color(i, colors[i])
-            self.qtgui_time_sink_x_1.set_line_style(i, styles[i])
-            self.qtgui_time_sink_x_1.set_line_marker(i, markers[i])
-            self.qtgui_time_sink_x_1.set_line_alpha(i, alphas[i])
-
-        self._qtgui_time_sink_x_1_win = sip.wrapinstance(self.qtgui_time_sink_x_1.qwidget(), Qt.QWidget)
-        self.top_layout.addWidget(self._qtgui_time_sink_x_1_win)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_c(
             1024, #size
             samp_rate, #samp_rate
@@ -252,18 +205,21 @@ class Pra3B_comu1_B1A_G4_modulineal(gr.top_block, Qt.QWidget):
 
         self._qtgui_freq_sink_x_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0.qwidget(), Qt.QWidget)
         self.top_layout.addWidget(self._qtgui_freq_sink_x_0_win)
+        self._fm_range = qtgui.Range(300, samp_rate/4, 100, 1e3, 200)
+        self._fm_win = qtgui.RangeWidget(self._fm_range, self.set_fm, "Frecuencia del mensaje", "counter_slider", float, QtCore.Qt.Horizontal)
+        self.top_layout.addWidget(self._fm_win)
         self.blocks_wavfile_source_0 = blocks.wavfile_source('/home/labcomu/Descargas/rebelion_joearroyo.wav', True)
         self.blocks_null_source_0 = blocks.null_source(gr.sizeof_float*1)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_cc(Ac)
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_ff(ka)
         self.blocks_float_to_complex_0 = blocks.float_to_complex(1)
         self.blocks_add_const_vxx_0 = blocks.add_const_ff(1)
-        self._Ka_range = qtgui.Range(0, 1, 1, 1, 200)
-        self._Ka_win = qtgui.RangeWidget(self._Ka_range, self.set_Ka, "Habilita potadora", "counter_slider", float, QtCore.Qt.Horizontal)
-        self.top_layout.addWidget(self._Ka_win)
         self._B_range = qtgui.Range(1, 20, 1, 10, 200)
         self._B_win = qtgui.RangeWidget(self._B_range, self.set_B, "# Muestras por simbolo", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._B_win)
+        self._Am_range = qtgui.Range(0, 4, 100e-3, 1, 200)
+        self._Am_win = qtgui.RangeWidget(self._Am_range, self.set_Am, "Amplitud del  mensaje", "counter_slider", float, QtCore.Qt.Horizontal)
+        self.top_layout.addWidget(self._Am_win)
 
 
         ##################################################
@@ -278,7 +234,6 @@ class Pra3B_comu1_B1A_G4_modulineal(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_null_source_0, 0), (self.blocks_float_to_complex_0, 1))
         self.connect((self.blocks_wavfile_source_0, 0), (self.rational_resampler_xxx_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.blocks_multiply_const_vxx_0, 0))
-        self.connect((self.rational_resampler_xxx_0, 0), (self.qtgui_time_sink_x_1, 0))
 
 
     def closeEvent(self, event):
@@ -296,7 +251,6 @@ class Pra3B_comu1_B1A_G4_modulineal(gr.top_block, Qt.QWidget):
         self.samp_rate = samp_rate
         self.qtgui_freq_sink_x_0.set_frequency_range(0, self.samp_rate)
         self.qtgui_time_sink_x_0.set_samp_rate(self.samp_rate)
-        self.qtgui_time_sink_x_1.set_samp_rate(self.samp_rate)
         self.uhd_usrp_sink_0.set_samp_rate(self.samp_rate)
 
     def get_n(self):
@@ -312,18 +266,18 @@ class Pra3B_comu1_B1A_G4_modulineal(gr.top_block, Qt.QWidget):
         self.ka = ka
         self.blocks_multiply_const_vxx_0.set_k(self.ka)
 
+    def get_fm(self):
+        return self.fm
+
+    def set_fm(self, fm):
+        self.fm = fm
+
     def get_fc(self):
         return self.fc
 
     def set_fc(self, fc):
         self.fc = fc
         self.uhd_usrp_sink_0.set_center_freq(self.fc, 0)
-
-    def get_Ka(self):
-        return self.Ka
-
-    def set_Ka(self, Ka):
-        self.Ka = Ka
 
     def get_GTX(self):
         return self.GTX
@@ -337,6 +291,12 @@ class Pra3B_comu1_B1A_G4_modulineal(gr.top_block, Qt.QWidget):
 
     def set_B(self, B):
         self.B = B
+
+    def get_Am(self):
+        return self.Am
+
+    def set_Am(self, Am):
+        self.Am = Am
 
     def get_Ac(self):
         return self.Ac
