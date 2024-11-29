@@ -1,2 +1,5 @@
-La carpeta "Practicaintroduccion" se creo con el proposito de cumplir con la actividad de la introduccion al laboratorio de comunicaciones.
-Gracias a esto se pudo conocer como generar una "Flowgraph", como se puede utilizar y entender el programa de GNU radio para llevar a cabo estas actividades.
+La practica numero 4 traia con ella dos partes, la primera que consistia en el monitoreo del espectro radioelectrico comprendido entre las frecuencias de 88 y 108 MHz con el objetivo de estudiar las diferentes emisoras que tienen cobertura en el laboratorio y la segunda cuyo objetivo era que el estudiante entendiera y puediera conocer las señales moduladas en angulo de banda ancha y estrecha.
+
+Practica_A: En esta practica se pudo, gracias a una antena presente en el laboratorio, el sintonizar con ayuda de GNU radio las diferentes frecuencias correspondientes a las emisoras y consiguientemente el poder analizarlas tanto por medio del analizador de espectro como del mismo programa de GNU radio. Esto fue una experiencia muy "chevere" ya que gracias a este laboratorio se pudo entender el como es que estas señale trabajan, que caracteristicas pueden algunas poseer como el piloto, el L+R, etc, y como su ancho de banda esta definidio por la "Agencia Nacional del Espectro" (ANE).
+
+Practica_B: 
