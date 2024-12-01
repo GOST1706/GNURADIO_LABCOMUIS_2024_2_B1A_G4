@@ -1,2 +1,5 @@
-La carpeta "Practicaintroduccion" se creo con el proposito de cumplir con la actividad de la introduccion al laboratorio de comunicaciones.
-Gracias a esto se pudo conocer como generar una "Flowgraph", como se puede utilizar y entender el programa de GNU radio para llevar a cabo estas actividades.
+La practica 2 traia consigo dos partes, cada una de ellas con el objetivo de estudiar y comprender el comportamiento de las señales las cuales pasan a travez de un canal.
+
+Practica_A: Para la primera parte de esta practica de laboratorio se pidio que por medio del programa GNU radio se generaran diferentes tipos de señales (senosoideales, triangulares, cudradas, etc) con el proposito de ver como se comportaban tanto en amplitud como en el espectro de frecuencia. A estas señales se le aplicaba un filtro con el cual se podia controlar la cantidad de ruido que se le suministraba a las señales y por medio del analizador de espectro se lograba apreciar su espectro y se podia calcular el ancho de banda de la señal.
+
+Practica_B: En esta practica se hacia algo similar a la primera, se generaban diferentes tipos de señales (senosoideales, triangulares, cudradas, etc), pero en este caso, se le definia una amplitud de ruido a cada una y por medio del uso del analizador de espectro y del osciloscopio se tenia que calcular ciertos parametros tales como la relacion señal a ruido o SNR, la potencia de las señales como del ruido, el ancho de banda que estas llegaban a presentar y tanto la amplitud de las señales como la del ruido.
