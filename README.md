@@ -1,2 +1,1 @@
-La carpeta "Practicaintroduccion" se creo con el proposito de cumplir con la actividad de la introduccion al laboratorio de comunicaciones. vGracias a esto se pudo conocer como generar una "Flowgraph", como se puede utilizar y entender el programa de GNU radio para llevar a cabo estas actividades. hola mundo jejjeje
-Gracias a esto se pudo conocer como generar una "Flowgraph", como se puede utilizar y entender el programa de GNU radio para llevar a cabo estas actividades. hola mundo jejjeje
+Por realizar
