@@ -1,6 +1,6 @@
-Este es e laboratorio de comunicaciones 
-se subdividirá por ramas 
-cada rama correspondiente a un laboratorio y cada una tiene su parte A y parte B 
+Este es el laboratorio de comunicaciones.
+Se subdividirá por ramas.....
+Cada rama correspondiente a un laboratorio y cada una tiene su parte A y parte B 
 dentro de cada una encontrará los codigos y evidencias de las practicas realizadas
 
 Practica 1 Conociendo
