@@ -1,4 +1,4 @@
-La práctica 3 se centra en las modulaciones lineales, específicamente en la modulación de amplitud (AM). Se explora cómo estas modulaciones afectan la señal en términos de su representación en el dominio del tiempo y la frecuencia, utilizando herramientas como osciloscopios y analizadores de espectro.
+La práctica 3 se centra en las modulaciones lineales, específicamente en la modulación de amplitud (AM). Se explora cómo estas modulaciones afectan la señal en términos de su representación en el dominio del tiempo y la frecuencia.
 
 En esta sección, se diseña y analiza un sistema para la representación de señales moduladas en amplitud. Se construye un modelo basado en bloques en GNU Radio para modular señales con diferentes índices de modulación (ka). Se mide la potencia de la señal modulada y se analiza su envolvente en el tiempo.
 Parte B
